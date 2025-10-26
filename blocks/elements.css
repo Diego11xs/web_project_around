@@ -1,0 +1,64 @@
+.elements {
+  font-weight: 900;
+  color: #000;
+  display: grid;
+  gap: 17px 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.elements__element {
+  max-width: 282px;
+  max-height: 361px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.element__image {
+  max-width: 282px;
+  max-height: 282px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.element__title {
+  display: flex;
+  margin: 25px 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.element__name {
+  margin: 0;
+  font-size: 24px;
+}
+
+.element__like-button {
+  width: 21px;
+  height: 19px;
+  background-image: url(../images/like.svg);
+  margin: auto;
+  background-size: contain;
+  background-position: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.element__like-button:hover {
+  background-image: url(../images/like-hover.svg);
+  cursor: pointer;
+}
+.element__like-button:active {
+  background-image: url(../images/like_active.svg);
+  cursor: pointer;
+}
+@media screen and (max-width: 880px) {
+  .elements {
+    max-width: 282px;
+    grid-template-columns: 1fr;
+    margin: auto;
+  }
+}
