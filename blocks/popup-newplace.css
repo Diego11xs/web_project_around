@@ -1,0 +1,156 @@
+/* =========================
+   DESKTOP
+========================= */
+
+.popup__newplace {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.popup__container-newplace {
+  max-width: 430px;
+  width: 100%;
+  height: 330px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.popup__newplace-closebtn {
+  background-image: url(../images/Close-button.png);
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+}
+.popup__newplace-closebtn:hover {
+  opacity: 60%;
+  border-color: rgba(255, 255, 255, 0.6);
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.popup__newplace-title {
+  max-width: 358px;
+  width: 100%;
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 36px auto 40px;
+}
+
+.popup__newplace-form {
+  max-width: 358px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.popup__newplace-input {
+  width: 100%;
+  height: 27px;
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  color: #000;
+  font-size: 14px;
+}
+
+.popup__newplace-input::placeholder {
+  color: #c4c4c4;
+}
+
+.popup__newplace-input:focus {
+  color: #000;
+}
+
+.popup__newplace-input:not(:placeholder-shown) ~ .popup__newplace-createbtn {
+  color: #fff;
+  border: none;
+  background-color: #000;
+}
+
+.popup__newplace-createbtn {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  color: #c4c4c4;
+  background-color: transparent;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.popup__newplace-createbtn:hover {
+  background-color: #000;
+  color: #fff;
+  transition: 0.25s;
+}
+
+.popup__newplace-createbtn:active {
+  color: #fff;
+  background-color: #000;
+  border: none;
+  opacity: 80%;
+  transform: scale(0.97);
+}
+
+/* =========================
+   TABLET
+========================= */
+@media screen and (min-width: 545px) and (max-width: 1024px) {
+  .popup__container-newplace {
+    max-width: 350px;
+    height: auto;
+    padding: 30px 22px;
+  }
+
+  .popup__newplace-title {
+    font-size: 22px;
+    margin: 20px auto 30px;
+  }
+
+  .popup__newplace-form {
+    gap: 24px;
+  }
+
+  .popup__newplace-closebtn {
+    top: -35px;
+    right: -35px;
+  }
+}
+
+/* =========================
+   PHONE
+========================= */
+@media screen and (min-width: 320px) and (max-width: 544px) {
+  .popup__container-newplace {
+    max-width: 350px;
+    height: auto;
+    padding: 30px 22px;
+  }
+
+  .popup__newplace-title {
+    font-size: 22px;
+    margin: 20px auto 30px;
+  }
+
+  .popup__newplace-form {
+    gap: 24px;
+  }
+
+  .popup__newplace-closebtn {
+    top: -35px;
+    right: -35px;
+  }
+}

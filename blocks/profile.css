@@ -1,6 +1,10 @@
+/* =========================
+   DESKTOP
+========================= */
+
 .profile {
   display: flex;
-  padding: 45px 0px;
+  padding: 45px 0;
 }
 
 .profile__avatar {
@@ -18,7 +22,6 @@
 
 .profile__info-container {
   display: flex;
-  flex-direction: row;
 }
 
 .profile__name {
@@ -37,8 +40,6 @@
 .profile__edit-button {
   width: 24px;
   height: 24px;
-  background-size: contain;
-  background-position: center;
   border: 1px solid #fff;
   background-color: transparent;
   cursor: pointer;
@@ -47,32 +48,32 @@
 }
 
 .profile__edit-button:hover {
-  cursor: pointer;
-  opacity: 60%;
-  border-color: rgba(255, 255, 255, 0.6);
+  opacity: 0.6;
 }
 
 .profile__add-button {
   width: 150px;
   height: 50px;
-  background-size: contain;
-  background-position: center;
-  background-color: transparent;
-  background-repeat: no-repeat;
   border: 1px solid #fff;
-  margin: auto 0 auto auto;
-}
-.profile__add-button:hover {
-  opacity: 60%;
-  border-color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  margin-left: auto;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 880px) {
+.profile__add-button:hover {
+  opacity: 0.6;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (min-width: 545px) and (max-width: 1024px) {
   .profile {
     max-width: 282px;
     flex-direction: column;
-    padding-bottom: 0;
     margin: auto;
+    padding-bottom: 0;
   }
 
   .profile__avatar {
@@ -86,10 +87,11 @@
 
   .profile__name {
     font-size: 22px;
+    padding-top: 26px;
   }
 
-  .profile__description {
-    margin: auto;
+  .profile__occupation {
+    text-align: center;
     padding-top: 14px;
   }
 
@@ -100,7 +102,25 @@
   }
 
   .profile__add-button {
-    margin: 36px auto;
     width: 100%;
+    margin: 36px auto;
+  }
+}
+
+/* =========================
+   PHONE
+========================= */
+
+@media screen and (min-width: 320px) and (max-width: 544px) {
+  .profile {
+    padding-top: 42px;
+  }
+
+  .profile__name {
+    font-size: 20px;
+  }
+
+  .profile__occupation {
+    font-size: 14px;
   }
 }

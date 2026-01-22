@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -45,7 +45,8 @@
           </button>
         </section>
 
-        <section class="elements">
+        <section class="elements"></section>
+        <!-- <section class="elements">
           <div class="elements__element">
             <img
               src="./images/yosemite.jpg"
@@ -61,7 +62,7 @@
           <div class="elements__element">
             <img
               src="./images/louise.jpg"
-              alt="valle de yosemite"
+              alt="Lago Louise"
               class="elements__image"
             />
             <div class="elements__title">
@@ -73,7 +74,7 @@
           <div class="elements__element">
             <img
               src="./images/calvas.jpg"
-              alt="valle de yosemite"
+              alt="Montañas Calvas"
               class="elements__image"
             />
             <div class="elements__title">
@@ -85,7 +86,7 @@
           <div class="elements__element">
             <img
               src="./images/latemar.jpg"
-              alt="valle de yosemite"
+              alt="Latemar"
               class="elements__image"
             />
             <div class="elements__title">
@@ -97,7 +98,7 @@
           <div class="elements__element">
             <img
               src="./images/vanois.jpg"
-              alt="valle de yosemite"
+              alt="Vanois National"
               class="elements__image"
             />
             <div class="elements__title">
@@ -109,7 +110,7 @@
           <div class="elements__element">
             <img
               src="./images/braies.png"
-              alt="valle de yosemite"
+              alt="Lago Di Braies"
               class="elements__image"
             />
             <div class="elements__title">
@@ -117,7 +118,18 @@
               <button class="elements__like-button"></button>
             </div>
           </div>
-        </section>
+        </section> -->
+
+        <template id="card-template">
+          <div class="elements__element">
+            <button class="elements__delete-button"></button>
+            <img class="elements__image" />
+            <div class="elements__title">
+              <h2 class="elements__name"></h2>
+              <button class="elements__like-button"></button>
+            </div>
+          </div>
+        </template>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2025 Around The U.S.</p>
@@ -125,7 +137,7 @@
     </div>
 
     <!-- Popups will go here -->
-    <div class="popup">
+    <div class="popup popup__profile">
       <div class="popup__container">
         <button class="popup__close-button"></button>
         <h2 class="popup__title">Editar perfil</h2>
@@ -146,6 +158,43 @@
         </form>
       </div>
     </div>
+
+    <!-- Popup New Place -->
+    <div class="popup popup__newplace">
+      <div class="popup__container popup__container-newplace">
+        <button class="popup__newplace-closebtn"></button>
+        <h2 class="popup__newplace-title">Nuevo Lugar</h2>
+        <form class="popup__newplace-form">
+          <input
+            class="popup__newplace-input"
+            id="newplace-input"
+            type="text"
+            placeholder="Titulo"
+          />
+          <input
+            class="popup__newplace-input"
+            id="newplace-url-input"
+            type="text"
+            placeholder="Enlace a la imagen"
+          />
+          <button class="popup__newplace-createbtn" type="submit">Crear</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup Image Preview -->
+    <div class="popup popup__image-preview">
+      <div class="popup__container popup__container-preview">
+        <button class="popup__preview-close"></button>
+
+        <div class="popup__image-frame">
+          <img class="popup__preview-image" />
+        </div>
+
+        <p class="popup__preview-caption"></p>
+      </div>
+    </div>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
