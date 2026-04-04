@@ -1,3 +1,15 @@
+import { initialCards } from "./cards.js";
+import { enableValidation, resetValidation } from "./validate.js";
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
 /* ============================
    POPUP PERFIL
 ============================ */
@@ -15,11 +27,17 @@ const profileOccupation = document.querySelector(".profile__occupation");
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
   occupationInput.value = profileOccupation.textContent;
+
+  // Lanzar un evento para que la validación revise los campos pre-llenados
+  nameInput.dispatchEvent(new Event("input"));
+  occupationInput.dispatchEvent(new Event("input"));
+
   profilePopup.classList.add("popup_opened");
 }
 
 function closeProfilePopup() {
   profilePopup.classList.remove("popup_opened");
+  resetValidation(profileForm, validationConfig);
 }
 
 editButton.addEventListener("click", openProfilePopup);
@@ -51,10 +69,35 @@ function openNewPlacePopup() {
 
 function closeNewPlacePopup() {
   newPlacePopup.classList.remove("popup_opened");
+  newPlaceForm.reset();
+  resetValidation(newPlaceForm, validationConfig);
 }
-
 newPlaceButton.addEventListener("click", openNewPlacePopup);
 newPlaceCloseBtn.addEventListener("click", closeNewPlacePopup);
+
+/* ============================
+   SUBMIT NUEVO LUGAR
+============================ */
+
+newPlaceForm.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+
+  cardsContainer.prepend(
+    createCard({
+      name: newPlaceTitleInput.value,
+      link: newPlaceUrlInput.value,
+    }),
+  );
+
+  newPlaceForm.reset();
+
+  // Desactivar el botón después de limpiar el formulario
+  const submitButton = newPlaceForm.querySelector(".popup__save-button");
+  submitButton.classList.add("popup__button_disabled");
+  submitButton.disabled = true;
+
+  closeNewPlacePopup();
+});
 
 /* ============================
    CREATE CARD FUNCTION
@@ -105,24 +148,6 @@ initialCards.forEach((cardData) => {
 });
 
 /* ============================
-   SUBMIT NUEVO LUGAR
-============================ */
-
-newPlaceForm.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-
-  cardsContainer.prepend(
-    createCard({
-      name: newPlaceTitleInput.value,
-      link: newPlaceUrlInput.value,
-    }),
-  );
-
-  newPlaceForm.reset();
-  closeNewPlacePopup();
-});
-
-/* ============================
    ESC CLOSE POPUPS
 ============================ */
 document.addEventListener("keydown", function (evt) {
@@ -132,6 +157,19 @@ document.addEventListener("keydown", function (evt) {
       openedPopup.classList.remove("popup_opened");
     }
   }
+});
+
+/* ============================
+   CERRAR POPUPS AL HACER CLIC EN EL OVERLAY
+============================ */
+const popups = document.querySelectorAll(".popup");
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup")) {
+      popup.classList.remove("popup_opened");
+    }
+  });
 });
 
 /* ============================
@@ -153,3 +191,8 @@ function openImagePopup(src, caption) {
 previewCloseBtn.addEventListener("click", () => {
   imagePopup.classList.remove("popup_opened");
 });
+
+/* ============================
+   INICIALIZAR VALIDACIÓN
+============================ */
+enableValidation(validationConfig);

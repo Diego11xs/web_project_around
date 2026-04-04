@@ -74,35 +74,76 @@
   color: #000;
 }
 
-.popup__input:not(:placeholder-shown) ~ .popup__save-button {
+/* .popup__input:not(:placeholder-shown) ~ .popup__save-button {
   color: #fff;
   border: none;
   background-color: #000;
+} */
+
+.popup__error {
+  color: #ff0000;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: -25px; /* Compensa el gap del form para pegarse al input */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  min-height: 15px; /* Mantiene el espacio aunque no haya error */
 }
+
+.popup__error_visible {
+  opacity: 1;
+}
+
+.popup__input_type_error {
+  border-bottom: 1px solid #ff0000;
+}
+
+/* =========================
+   SAVE BUTTON
+========================= */
 
 .popup__save-button {
   width: 100%;
   height: 50px;
   font-size: 18px;
-  color: #c4c4c4;
-  background-color: transparent;
-  border: 1px solid #c4c4c4;
+  color: #ffffff; /* Letra blanca */
+  background-color: #000000; /* Fondo negro */
+  border: none; /* Quitamos el borde para el botón activo */
   border-radius: 2px;
   margin-top: 10px;
   cursor: pointer;
+  transition:
+    opacity 0.25s ease,
+    background-color 0.25s ease; /* Transición suave */
 }
 
 .popup__save-button:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: #808080;
   transition: 0.25s;
 }
 
-.popup__save-button:active {
+/* .popup__save-button:active {
   color: #fff;
   background-color: #000;
   border: none;
   opacity: 80%;
+} */
+
+/* Estado inactivo del botón de guardar */
+.popup__button_disabled {
+  border: 1px solid #000000;
+  color: #000000;
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.popup__save-button.popup__button_disabled {
+  background-color: transparent; /* Fondo blanco/transparente */
+  color: #000000; /* Letra negra */
+  border: 1px solid #000000; /* Borde negro */
+  opacity: 0.2; /* Esto hace que el borde y la letra se vean gris clarito */
+  cursor: not-allowed;
+  pointer-events: none; /* ¡Vital! Desactiva el clic y evita que funcione el :hover */
 }
 
 @media screen and (min-width: 545px) and (max-width: 1024px) {

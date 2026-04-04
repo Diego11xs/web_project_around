@@ -74,7 +74,8 @@ project/
 │
 ├── scripts/
 │ ├── index.js # Lógica de popups y eventos generales
-│ └── cards.js # Creación y manejo de tarjetas
+│ ├── cards.js # Creación y manejo de tarjetas
+│ └── validate.js # Validación de formularios
 │
 ├── images/
 │ ├── Logo.png
@@ -97,27 +98,23 @@ project/
 └── README.md
 
 💡 Aprendizajes clave
+Durante el desarrollo de estos sprints se reforzaron:
 
-Durante el desarrollo de este sprint se reforzaron:
+Implementación de módulos de JavaScript (ES6) para mantener el código organizado y limpio.
 
-Manipulación avanzada del DOM.
+Validación de formularios personalizada utilizando la API de validación de restricciones nativa de HTML5.
 
-Creación de componentes dinámicos (tarjetas).
+Manejo de objetos de configuración para crear funciones reutilizables y escalables.
+
+Cierre de modales dinámicos mediante propagación de eventos (haciendo clic en el overlay).
+
+Manipulación avanzada del DOM y creación de componentes dinámicos (tarjetas).
 
 Uso correcto de event.preventDefault().
 
-Manejo de múltiples popups reutilizando lógica.
-
-Animaciones CSS sincronizadas con JavaScript.
-
-Diseño responsive con breakpoints reales.
-
-Separación de responsabilidades (JS y CSS).
-
-Buenas prácticas de estructura y escalabilidad.
+Diseño responsive con breakpoints reales y separación de responsabilidades.
 
 🧑‍💻 Autor
-
 Diego Granados
 Desarrollador Frontend en formación 💻
-📅 Sprint 8 – TripleTen (2025)
+📅 Sprint 9 – TripleTen (2026)
