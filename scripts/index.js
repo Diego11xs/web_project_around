@@ -1,5 +1,6 @@
+import Card from "./Card.js";
 import { initialCards } from "./cards.js";
-import { enableValidation, resetValidation } from "./validate.js";
+import FormValidator from "./FormValidator.js";
 
 const validationConfig = {
   formSelector: ".popup__form",
@@ -37,7 +38,7 @@ function openProfilePopup() {
 
 function closeProfilePopup() {
   profilePopup.classList.remove("popup_opened");
-  resetValidation(profileForm, validationConfig);
+  profileFormValidator.resetValidation();
 }
 
 editButton.addEventListener("click", openProfilePopup);
@@ -62,6 +63,8 @@ const newPlaceCloseBtn = newPlacePopup.querySelector(
 const newPlaceForm = newPlacePopup.querySelector(".popup__newplace-form");
 const newPlaceTitleInput = newPlacePopup.querySelector("#newplace-input");
 const newPlaceUrlInput = newPlacePopup.querySelector("#newplace-url-input");
+const profileFormValidator = new FormValidator(validationConfig, profileForm);
+const newPlaceFormValidator = new FormValidator(validationConfig, newPlaceForm);
 
 function openNewPlacePopup() {
   newPlacePopup.classList.add("popup_opened");
@@ -70,7 +73,7 @@ function openNewPlacePopup() {
 function closeNewPlacePopup() {
   newPlacePopup.classList.remove("popup_opened");
   newPlaceForm.reset();
-  resetValidation(newPlaceForm, validationConfig);
+  newPlaceFormValidator.resetValidation();
 }
 newPlaceButton.addEventListener("click", openNewPlacePopup);
 newPlaceCloseBtn.addEventListener("click", closeNewPlacePopup);
@@ -89,13 +92,6 @@ newPlaceForm.addEventListener("submit", function (evt) {
     }),
   );
 
-  newPlaceForm.reset();
-
-  // Desactivar el botón después de limpiar el formulario
-  const submitButton = newPlaceForm.querySelector(".popup__save-button");
-  submitButton.classList.add("popup__button_disabled");
-  submitButton.disabled = true;
-
   closeNewPlacePopup();
 });
 
@@ -104,41 +100,11 @@ newPlaceForm.addEventListener("submit", function (evt) {
 ============================ */
 
 const cardsContainer = document.querySelector(".elements");
-const cardTemplate = document.querySelector("#card-template").content;
 
 function createCard(data) {
-  const cardElement = cardTemplate
-    .querySelector(".elements__element")
-    .cloneNode(true);
-
-  const image = cardElement.querySelector(".elements__image");
-  const title = cardElement.querySelector(".elements__name");
-  const deleteBtn = cardElement.querySelector(".elements__delete-button");
-  const likeBtn = cardElement.querySelector(".elements__like-button");
-
-  image.src = data.link;
-  image.alt = data.name;
-  title.textContent = data.name;
-
-  // PREVIEW
-  image.addEventListener("click", () => {
-    openImagePopup(data.link, data.name);
-  });
-
-  // LIKE
-  likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("elements__like-button_active");
-  });
-
-  // DELETE
-  deleteBtn.addEventListener("click", () => {
-    cardElement.classList.add("elements_remove");
-    setTimeout(() => cardElement.remove(), 300);
-  });
-
-  return cardElement;
+  const card = new Card(data, "#card-template", openImagePopup);
+  return card.generateCard();
 }
-
 /* ============================
    TARJETAS INICIALES
 ============================ */
@@ -195,4 +161,5 @@ previewCloseBtn.addEventListener("click", () => {
 /* ============================
    INICIALIZAR VALIDACIÓN
 ============================ */
-enableValidation(validationConfig);
+profileFormValidator.enableValidation();
+newPlaceFormValidator.enableValidation();
