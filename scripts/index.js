@@ -1,3 +1,4 @@
+import { openPopup, closePopup, setOverlayCloseListener } from "./utils.js";
 import Card from "./Card.js";
 import { initialCards } from "./cards.js";
 import FormValidator from "./FormValidator.js";
@@ -33,11 +34,11 @@ function openProfilePopup() {
   nameInput.dispatchEvent(new Event("input"));
   occupationInput.dispatchEvent(new Event("input"));
 
-  profilePopup.classList.add("popup_opened");
+  openPopup(profilePopup);
 }
 
 function closeProfilePopup() {
-  profilePopup.classList.remove("popup_opened");
+  closePopup(profilePopup);
   profileFormValidator.resetValidation();
 }
 
@@ -67,11 +68,11 @@ const profileFormValidator = new FormValidator(validationConfig, profileForm);
 const newPlaceFormValidator = new FormValidator(validationConfig, newPlaceForm);
 
 function openNewPlacePopup() {
-  newPlacePopup.classList.add("popup_opened");
+  openPopup(newPlacePopup);
 }
 
 function closeNewPlacePopup() {
-  newPlacePopup.classList.remove("popup_opened");
+  closePopup(newPlacePopup);
   newPlaceForm.reset();
   newPlaceFormValidator.resetValidation();
 }
@@ -105,38 +106,6 @@ function createCard(data) {
   const card = new Card(data, "#card-template", openImagePopup);
   return card.generateCard();
 }
-/* ============================
-   TARJETAS INICIALES
-============================ */
-
-initialCards.forEach((cardData) => {
-  cardsContainer.append(createCard(cardData));
-});
-
-/* ============================
-   ESC CLOSE POPUPS
-============================ */
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    if (openedPopup) {
-      openedPopup.classList.remove("popup_opened");
-    }
-  }
-});
-
-/* ============================
-   CERRAR POPUPS AL HACER CLIC EN EL OVERLAY
-============================ */
-const popups = document.querySelectorAll(".popup");
-
-popups.forEach((popup) => {
-  popup.addEventListener("click", (evt) => {
-    if (evt.target.classList.contains("popup")) {
-      popup.classList.remove("popup_opened");
-    }
-  });
-});
 
 /* ============================
    POPUP IMAGE PREVIEW
@@ -151,11 +120,28 @@ function openImagePopup(src, caption) {
   previewImage.alt = caption;
   previewCaption.textContent = caption;
 
-  imagePopup.classList.add("popup_opened");
+  openPopup(imagePopup);
 }
 
 previewCloseBtn.addEventListener("click", () => {
-  imagePopup.classList.remove("popup_opened");
+  closePopup(imagePopup);
+});
+
+/* ============================
+   TARJETAS INICIALES
+============================ */
+
+initialCards.forEach((cardData) => {
+  cardsContainer.append(createCard(cardData));
+});
+
+/* ============================
+   CERRAR POPUPS AL HACER CLIC EN EL OVERLAY
+============================ */
+const popups = document.querySelectorAll(".popup");
+
+popups.forEach((popup) => {
+  setOverlayCloseListener(popup);
 });
 
 /* ============================
