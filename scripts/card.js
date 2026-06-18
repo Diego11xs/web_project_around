@@ -24,6 +24,10 @@ export default class Card {
     setTimeout(() => this._element.remove(), 300);
   }
 
+  _handleImageClick() {
+    this._handleCardClick(this._link, this._name);
+  }
+
   _setEventListeners() {
     this._likeButton.addEventListener("click", () => {
       this._handleLikeButton();
@@ -34,7 +38,7 @@ export default class Card {
     });
 
     this._image.addEventListener("click", () => {
-      this._handleCardClick(this._link, this._name);
+      this._handleImageClick();
     });
   }
 

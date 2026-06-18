@@ -1,120 +1,141 @@
-🌎 Tripleten web_project_around
-Around The U.S.
-🧾 Descripción
+# 🌎 TripleTen - web_project_around
 
-Around The U.S. es una aplicación web responsiva desarrollada como parte del Sprint 7 del programa de desarrollo web de TripleTen.
+# Around The U.S.
 
-El proyecto permite editar la información del perfil del usuario mediante popups interactivos y gestionar una galería dinámica de tarjetas con imágenes de lugares emblemáticos. Cada tarjeta puede ser creada, eliminada, marcada como favorita y visualizada en pantalla completa, todo sin recargar la página.
+## 🧾 Descripción
 
-🚀 Funcionalidades
-👤 Perfil
+Around The U.S. es una aplicación web responsiva desarrollada como parte del programa de Desarrollo Web de TripleTen.
 
-🖋️ Editar perfil: Modifica el nombre y la ocupación del usuario mediante un popup.
+El proyecto permite editar la información del perfil del usuario mediante ventanas modales interactivas y gestionar una galería dinámica de tarjetas con imágenes de lugares emblemáticos. Cada tarjeta puede ser creada, eliminada, marcada como favorita y visualizada en pantalla completa, todo sin recargar la página.
 
-💾 Guardar cambios: Los datos se actualizan dinámicamente en la interfaz.
+En esta versión del proyecto se implementó una arquitectura basada en Programación Orientada a Objetos (POO) y módulos ES6, mejorando la organización, reutilización y escalabilidad del código.
 
-❌ Cerrar popup: Disponible mediante botón de cierre o tecla ESC.
+---
 
-🖼️ Galería de tarjetas
+# 🚀 Funcionalidades
 
-➕ Agregar nuevas tarjetas con título e imagen mediante formulario.
+## 👤 Perfil
 
-❤️ Like interactivo que se mantiene activo visualmente.
+- 🖋️ Editar perfil mediante un formulario emergente.
+- 💾 Actualización dinámica del nombre y ocupación del usuario.
+- ❌ Cierre del popup mediante botón, tecla ESC o clic sobre el overlay.
 
-🗑️ Eliminar tarjetas con animación de salida.
+## 🖼️ Galería de tarjetas
 
-🔍 Vista previa de imagen en pantalla completa al hacer click.
+- ➕ Agregar nuevas tarjetas con título e imagen.
+- ❤️ Marcar tarjetas como favoritas.
+- 🗑️ Eliminar tarjetas con animación.
+- 🔍 Visualizar imágenes en pantalla completa.
+- 📱 Adaptación automática del contenido al tamaño de la imagen.
+- ❌ Cierre del popup de imagen mediante botón, ESC o clic sobre el overlay.
 
-🧭 Imagen centrada y proporcional, respetando su tamaño original.
+## ✔️ Validación de formularios
 
-❌ Cerrar preview con botón o tecla ESC.
+- Validación personalizada utilizando la API nativa de HTML5.
+- Mensajes de error dinámicos.
+- Botones Submit habilitados y deshabilitados automáticamente.
+- Restablecimiento del estado de validación al cerrar los formularios.
 
-📱 Responsive Design
+## 📱 Diseño responsivo
 
-💻 Desktop: 3 columnas.
+- 💻 Desktop: 3 columnas.
+- 📱 Tablet: 2 columnas.
+- 📱 Mobile: 1 columna.
 
-📱 Tablet: 2 columnas.
+El diseño se adapta correctamente a distintos tamaños de pantalla.
 
-📱 Mobile: 1 columna.
+---
 
-Diseño adaptable en perfiles, tarjetas y popups.
+# 🧩 Tecnologías utilizadas
 
-🧩 Tecnologías utilizadas
+### HTML5
 
-HTML5 → Estructura semántica.
+- Estructura semántica.
 
-CSS3
+### CSS3
 
-Flexbox
+- Flexbox.
+- Grid Layout.
+- Media Queries.
+- Animaciones y transiciones.
 
-Grid Layout
+### JavaScript (ES6)
 
-Animaciones y transiciones
+- Manipulación del DOM.
+- Programación Orientada a Objetos (POO).
+- Clases y objetos.
+- Módulos ES6 (import/export).
+- Manejo de eventos.
+- Formularios dinámicos.
+- Componentes reutilizables.
 
-Media Queries (Desktop / Tablet / Phone)
+### Normalize.css
 
-JavaScript (Vanilla JS)
+- Consistencia visual entre navegadores.
 
-Manipulación del DOM
+---
 
-Manejo de eventos
+# 🗂️ Estructura del proyecto
 
-Formularios dinámicos
-
-Componentes reutilizables (tarjetas)
-
-Normalize.css → Consistencia entre navegadores.
-
-🗂️ Estructura del proyecto
+```
 project/
 │
 ├── index.html
+│
 ├── pages/
-│ └── index.css
+│   └── index.css
 │
 ├── scripts/
-│ ├── index.js # Lógica de popups y eventos generales
-│ ├── cards.js # Creación y manejo de tarjetas
-│ └── validate.js # Validación de formularios
+│   ├── index.js
+│   ├── Card.js
+│   ├── FormValidator.js
+│   ├── utils.js
+│   └── cards.js
 │
 ├── images/
-│ ├── Logo.png
-│ ├── profile.png
-│ ├── editar.png
-│ ├── add-button.png
-│ ├── Close-button.png
-│ ├── Trash.png
-│ ├── Trashover.png
-│ ├── like.svg
-│ ├── like-hover.svg
-│ ├── like_active.svg
-│ ├── yosemite.jpg
-│ ├── louise.jpg
-│ ├── calvas.jpg
-│ ├── latemar.jpg
-│ ├── vanoix.jpg
-│ └── braies.png
+│   ├── Logo.png
+│   ├── profile.png
+│   ├── editar.png
+│   ├── add-button.png
+│   ├── Close-button.png
+│   ├── Trash.png
+│   ├── Trashover.png
+│   ├── like.svg
+│   ├── like-hover.svg
+│   ├── like_active.svg
+│   ├── yosemite.jpg
+│   ├── louise.jpg
+│   ├── calvas.jpg
+│   ├── latemar.jpg
+│   ├── vanoix.jpg
+│   └── braies.png
 │
 └── README.md
+```
 
-💡 Aprendizajes clave
-Durante el desarrollo de estos sprints se reforzaron:
+---
 
-Implementación de módulos de JavaScript (ES6) para mantener el código organizado y limpio.
+# 💡 Aprendizajes clave
 
-Validación de formularios personalizada utilizando la API de validación de restricciones nativa de HTML5.
+Durante el desarrollo de este proyecto se reforzaron los siguientes conceptos:
 
-Manejo de objetos de configuración para crear funciones reutilizables y escalables.
+- Programación Orientada a Objetos (POO).
+- Creación e implementación de clases reutilizables.
+- Modularización del código mediante ES6 Modules.
+- Organización del proyecto siguiendo separación de responsabilidades.
+- Validación avanzada de formularios.
+- Uso de objetos de configuración.
+- Manipulación dinámica del DOM.
+- Gestión de eventos y ventanas modales.
+- Desarrollo responsive.
+- Buenas prácticas de mantenibilidad y escalabilidad del código.
 
-Cierre de modales dinámicos mediante propagación de eventos (haciendo clic en el overlay).
+---
 
-Manipulación avanzada del DOM y creación de componentes dinámicos (tarjetas).
+# 🧑‍💻 Autor
 
-Uso correcto de event.preventDefault().
+**Diego Granados**
 
-Diseño responsive con breakpoints reales y separación de responsabilidades.
-
-🧑‍💻 Autor
-Diego Granados
 Desarrollador Frontend en formación 💻
-📅 Sprint 9 – TripleTen (2026)
+
+**TripleTen - Sprint 10 (2026)**

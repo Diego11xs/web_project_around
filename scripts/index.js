@@ -12,9 +12,7 @@ const validationConfig = {
   errorClass: "popup__error_visible",
 };
 
-/* ============================
-   POPUP PERFIL
-============================ */
+/* POPUP PERFIL */
 
 const editButton = document.querySelector(".profile__edit-button");
 const profilePopup = document.querySelector(".popup__profile");
@@ -26,11 +24,12 @@ const occupationInput = profilePopup.querySelector("#ocupation-input");
 const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
 
+const profileFormValidator = new FormValidator(validationConfig, profileForm);
+
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
   occupationInput.value = profileOccupation.textContent;
 
-  // Lanzar un evento para que la validación revise los campos pre-llenados
   nameInput.dispatchEvent(new Event("input"));
   occupationInput.dispatchEvent(new Event("input"));
 
@@ -52,9 +51,7 @@ profileForm.addEventListener("submit", function (evt) {
   closeProfilePopup();
 });
 
-/* ============================
-   POPUP NUEVO LUGAR
-============================ */
+/* POPUP NUEVO LUGAR */
 
 const newPlaceButton = document.querySelector(".profile__add-button");
 const newPlacePopup = document.querySelector(".popup__newplace");
@@ -64,7 +61,7 @@ const newPlaceCloseBtn = newPlacePopup.querySelector(
 const newPlaceForm = newPlacePopup.querySelector(".popup__newplace-form");
 const newPlaceTitleInput = newPlacePopup.querySelector("#newplace-input");
 const newPlaceUrlInput = newPlacePopup.querySelector("#newplace-url-input");
-const profileFormValidator = new FormValidator(validationConfig, profileForm);
+
 const newPlaceFormValidator = new FormValidator(validationConfig, newPlaceForm);
 
 function openNewPlacePopup() {
@@ -76,40 +73,16 @@ function closeNewPlacePopup() {
   newPlaceForm.reset();
   newPlaceFormValidator.resetValidation();
 }
+
 newPlaceButton.addEventListener("click", openNewPlacePopup);
 newPlaceCloseBtn.addEventListener("click", closeNewPlacePopup);
 
-/* ============================
-   SUBMIT NUEVO LUGAR
-============================ */
-
-newPlaceForm.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-
-  cardsContainer.prepend(
-    createCard({
-      name: newPlaceTitleInput.value,
-      link: newPlaceUrlInput.value,
-    }),
-  );
-
-  closeNewPlacePopup();
-});
-
-/* ============================
-   CREATE CARD FUNCTION
-============================ */
+/* CONTENEDOR DE TARJETAS */
 
 const cardsContainer = document.querySelector(".elements");
 
-function createCard(data) {
-  const card = new Card(data, "#card-template", openImagePopup);
-  return card.generateCard();
-}
+/* POPUP IMAGE PREVIEW */
 
-/* ============================
-   POPUP IMAGE PREVIEW
-============================ */
 const imagePopup = document.querySelector(".popup__image-preview");
 const previewImage = imagePopup.querySelector(".popup__preview-image");
 const previewCaption = imagePopup.querySelector(".popup__preview-caption");
@@ -127,25 +100,41 @@ previewCloseBtn.addEventListener("click", () => {
   closePopup(imagePopup);
 });
 
-/* ============================
-   TARJETAS INICIALES
-============================ */
+/* SUBMIT NUEVO LUGAR */
 
-initialCards.forEach((cardData) => {
-  cardsContainer.append(createCard(cardData));
+newPlaceForm.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+
+  const card = new Card(
+    {
+      name: newPlaceTitleInput.value,
+      link: newPlaceUrlInput.value,
+    },
+    "#card-template",
+    openImagePopup,
+  );
+
+  cardsContainer.prepend(card.generateCard());
+
+  closeNewPlacePopup();
 });
 
-/* ============================
-   CERRAR POPUPS AL HACER CLIC EN EL OVERLAY
-============================ */
+/* TARJETAS INICIALES */
+
+initialCards.forEach((cardData) => {
+  const card = new Card(cardData, "#card-template", openImagePopup);
+  cardsContainer.append(card.generateCard());
+});
+
+/* CERRAR POPUPS AL HACER CLIC EN EL OVERLAY */
+
 const popups = document.querySelectorAll(".popup");
 
 popups.forEach((popup) => {
   setOverlayCloseListener(popup);
 });
 
-/* ============================
-   INICIALIZAR VALIDACIÓN
-============================ */
+/* INICIALIZAR VALIDACIÓN */
+
 profileFormValidator.enableValidation();
 newPlaceFormValidator.enableValidation();
