@@ -1,7 +1,7 @@
 import { openPopup, closePopup, setOverlayCloseListener } from "./utils.js";
-import Card from "./Card.js";
+import Card from "./card.js";
 import { initialCards } from "./cards.js";
-import FormValidator from "./FormValidator.js";
+import FormValidator from "./formvalidator.js";
 
 const validationConfig = {
   formSelector: ".popup__form",
