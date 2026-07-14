@@ -2,7 +2,11 @@
 Around The U.S.
 GitHub Pages
 
-Ver proyecto publicado
+# Around The U.S.
+
+## Proyecto publicado
+
+https://diego11xs.github.io/web_project_around/
 
 🧾 Descripción
 
@@ -62,6 +66,7 @@ Formularios dinámicos.
 Componentes reutilizables.
 Normalize.css
 Consistencia visual entre navegadores.
+
 🗂️ Estructura del proyecto
 project/
 │
