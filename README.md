@@ -1,14 +1,12 @@
-🌎 TripleTen - web_project_around
-Around The U.S.
-GitHub Pages
+# 🌎 TripleTen - web_project_around
 
 # Around The U.S.
 
-## Proyecto publicado
+## GitHub Pages
 
-https://diego11xs.github.io/web_project_around/
+[Ver proyecto publicado](https://diego11xs.github.io/web_project_around/)
 
-🧾 Descripción
+## 🧾 Descripción
 
 Around The U.S. es una aplicación web responsiva desarrollada como parte del programa de Desarrollo Web de TripleTen.
 
