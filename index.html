@@ -145,6 +145,7 @@
           <input
             class="popup__input"
             id="name-input"
+            name="name"
             type="text"
             placeholder="Nombre"
             required
@@ -155,14 +156,15 @@
 
           <input
             class="popup__input"
-            id="ocupation-input"
+            id="occupation-input"
+            name="occupation"
             type="text"
             placeholder="Acerca de mí"
             required
             minlength="2"
             maxlength="200"
           />
-          <span class="popup__error" id="ocupation-input-error"></span>
+          <span class="popup__error" id="occupation-input-error"></span>
 
           <button
             class="popup__save-button popup__button_disabled"
@@ -178,12 +180,13 @@
     <!-- Popup New Place -->
     <div class="popup popup__newplace">
       <div class="popup__container popup__container-newplace">
-        <button class="popup__newplace-closebtn"></button>
+        <button class="popup__close-button"></button>
         <h2 class="popup__newplace-title">Nuevo Lugar</h2>
         <form class="popup__form popup__newplace-form" novalidate>
           <input
             class="popup__input popup__newplace-input"
             id="newplace-input"
+            name="title"
             type="text"
             placeholder="Título"
             required
@@ -195,6 +198,7 @@
           <input
             class="popup__input popup__newplace-input"
             id="newplace-url-input"
+            name="link"
             type="url"
             placeholder="Enlace a la imagen"
             required
@@ -215,7 +219,7 @@
     <!-- Popup Image Preview -->
     <div class="popup popup__image-preview">
       <div class="popup__container popup__container-preview">
-        <button class="popup__preview-close"></button>
+        <button class="popup__close-button"></button>
 
         <div class="popup__image-frame">
           <img class="popup__preview-image" />

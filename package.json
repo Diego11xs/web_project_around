@@ -1,0 +1,23 @@
+{
+  "name": "web_project_around",
+  "version": "1.0.0",
+  "description": "Around The U.S. es una aplicación web responsiva desarrollada como parte del programa de Desarrollo Web de TripleTen.",
+  "homepage": "https://github.com/Diego11xs/web_project_around#readme",
+  "bugs": {
+    "url": "https://github.com/Diego11xs/web_project_around/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diego11xs/web_project_around.git"
+  },
+  "license": "ISC",
+  "author": "Diego Granados",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "jquery": "^4.0.0"
+  }
+}

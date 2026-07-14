@@ -25,7 +25,10 @@ export default class Card {
   }
 
   _handleImageClick() {
-    this._handleCardClick(this._link, this._name);
+    this._handleCardClick({
+      name: this._name,
+      link: this._link,
+    });
   }
 
   _setEventListeners() {
