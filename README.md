@@ -8,113 +8,181 @@
 
 ## 🧾 Descripción
 
-Around The U.S. es una aplicación web responsiva desarrollada como parte del programa de Desarrollo Web de TripleTen.
+Around The U.S. es una aplicación web responsiva que permite gestionar un perfil de usuario y una galería interactiva de lugares.
 
-El proyecto permite administrar un perfil de usuario y una galería interactiva de lugares emblemáticos. Los usuarios pueden editar su información personal, agregar nuevas tarjetas, eliminar tarjetas existentes, marcar lugares como favoritos y visualizar imágenes en pantalla completa mediante ventanas emergentes.
+La aplicación está conectada a una API REST, por lo que los cambios realizados en el perfil, avatar, tarjetas y likes permanecen guardados después de actualizar la página.
 
-En esta versión se implementó una arquitectura basada en Programación Orientada a Objetos (POO), utilizando clases especializadas, herencia y módulos ES6 para mejorar la organización, reutilización y escalabilidad del código.
+El proyecto utiliza Programación Orientada a Objetos, herencia, módulos ES6 y solicitudes asíncronas para mantener una estructura organizada, reutilizable y escalable.
 
 🚀 Funcionalidades
-👤 Gestión de perfil
-🖋️ Edición de nombre y ocupación mediante formulario emergente.
-💾 Actualización dinámica de la información del usuario.
-🔄 Carga automática de los datos actuales al abrir el formulario.
-❌ Cierre de ventanas emergentes mediante botón, tecla ESC o clic sobre el overlay.
+👤 Gestión del perfil
+Carga automática de la información del usuario desde la API.
+Edición del nombre y la ocupación.
+Actualización de la foto de perfil mediante una URL.
+Persistencia de los cambios después de recargar la página.
+Estado de carga durante las solicitudes.
 🖼️ Gestión de tarjetas
-➕ Creación dinámica de nuevas tarjetas.
-❤️ Marcado y desmarcado de tarjetas favoritas.
-🗑️ Eliminación de tarjetas individuales.
-🔍 Visualización de imágenes en tamaño completo.
-🖼️ Actualización automática del contenido del popup de imagen.
+Obtención de las tarjetas desde la API.
+Creación de nuevas tarjetas.
+Inserción de tarjetas nuevas al principio de la galería.
+Eliminación de tarjetas propias.
+Ocultamiento del botón de eliminación en tarjetas ajenas.
+Confirmación antes de eliminar una tarjeta.
+Vista ampliada de las imágenes.
+Eliminación visual con una transición.
+❤️ Likes
+Registro de likes mediante la API.
+Eliminación de likes.
+Actualización visual del corazón.
+Persistencia del estado después de recargar la página.
 ✔️ Validación de formularios
-Validación personalizada utilizando la API nativa de HTML5.
+Validación personalizada mediante la API nativa de HTML5.
 Mensajes de error dinámicos.
-Habilitación y deshabilitación automática de botones de envío.
-Restablecimiento del estado de validación al cerrar formularios.
+Habilitación y deshabilitación automática de los botones.
+Restablecimiento de errores al volver a abrir los formularios.
+Validación del formulario de perfil, nueva tarjeta y avatar.
+🪟 Ventanas emergentes
+
+Los popups pueden cerrarse mediante:
+
+El botón de cierre.
+La tecla Escape.
+Un clic sobre el overlay.
+
+La eliminación utiliza un popup especializado para solicitar confirmación antes de enviar la petición a la API.
+
+⏳ Estados de carga
+
+Los botones muestran información durante las solicitudes asíncronas:
+
+Guardando...
+Eliminando...
+
+Esto evita envíos repetidos y proporciona retroalimentación visual al usuario.
+
 🧩 Arquitectura orientada a objetos
-Clase Card para la creación y gestión de tarjetas.
-Clase Section para renderizar colecciones de elementos.
-Clase Popup como clase base para ventanas emergentes.
-Clase PopupWithForm para formularios emergentes.
-Clase PopupWithImage para visualización de imágenes.
-Clase UserInfo para administrar la información del usuario.
-Separación clara de responsabilidades mediante módulos ES6.
+
+El proyecto utiliza las siguientes clases:
+
+Api: administra las solicitudes a la API REST.
+Card: crea y gestiona cada tarjeta.
+Section: renderiza colecciones de elementos.
+Popup: clase base para las ventanas emergentes.
+PopupWithForm: administra popups con formularios.
+PopupWithImage: muestra imágenes ampliadas.
+PopupWithConfirmation: confirma la eliminación de tarjetas.
+UserInfo: administra la información del usuario.
+FormValidator: controla la validación de formularios.
+
+Cada clase tiene una responsabilidad específica y se encuentra en su propio módulo.
+
+🌐 Integración con API
+
+La aplicación se comunica con la API de TripleTen para realizar las siguientes operaciones:
+
+Obtener la información del usuario.
+Obtener las tarjetas iniciales.
+Actualizar el perfil.
+Actualizar el avatar.
+Crear tarjetas.
+Eliminar tarjetas.
+Agregar likes.
+Retirar likes.
+
+La información del usuario y las tarjetas se carga simultáneamente mediante Promise.all().
+
+Las solicitudes utilizan los métodos HTTP:
+
+GET
+POST
+PATCH
+PUT
+DELETE
+
+Los errores de las solicitudes se gestionan mediante .catch().
+
 📱 Diseño responsivo
-💻 Desktop: 3 columnas.
-📱 Tablet: 2 columnas.
-📱 Mobile: 1 columna.
 
-El diseño se adapta correctamente a diferentes resoluciones y tamaños de pantalla.
+La galería se adapta a diferentes tamaños de pantalla:
 
-🧩 Tecnologías utilizadas
+Desktop: tres columnas.
+Tablet: dos columnas.
+Mobile: una columna.
+
+El diseño utiliza CSS Grid, Flexbox y media queries.
+
+🛠️ Tecnologías utilizadas
 HTML5
 Estructura semántica.
+Formularios.
+Plantillas mediante <template>.
+Atributos de accesibilidad.
 CSS3
 Flexbox.
 Grid Layout.
-Media Queries.
+Metodología BEM.
+Media queries.
 Animaciones y transiciones.
-JavaScript (ES6)
+Diseño responsivo.
+JavaScript ES6
 Manipulación del DOM.
-Programación Orientada a Objetos (POO).
+Programación Orientada a Objetos.
 Clases y herencia.
-Módulos ES6 (import/export).
+Módulos ES6.
+Promesas.
+API Fetch.
 Manejo de eventos.
 Formularios dinámicos.
 Componentes reutilizables.
-Normalize.css
-Consistencia visual entre navegadores.
-
-🗂️ Estructura del proyecto
-project/
-│
+🗂️ Estructura principal
+web_project_around/
 ├── index.html
-│
+├── README.md
+├── images/
 ├── pages/
 │ └── index.css
-│
-├── scripts/
-│ ├── index.js
-│ ├── cards.js
-│ ├── Card.js
-│ ├── Section.js
-│ ├── Popup.js
-│ ├── PopupWithForm.js
-│ ├── PopupWithImage.js
-│ ├── UserInfo.js
-│ └── FormValidator.js
-│
-├── images/
-│ ├── Logo.png
-│ ├── profile.png
-│ ├── editar.png
-│ ├── add-button.png
-│ ├── yosemite.jpg
-│ ├── louise.jpg
-│ ├── calvas.jpg
-│ ├── latemar.jpg
-│ ├── vanois.jpg
-│ └── braies.png
-│
-└── README.md
+└── scripts/
+├── Api.js
+├── Card.js
+├── FormValidator.js
+├── Popup.js
+├── PopupWithConfirmation.js
+├── PopupWithForm.js
+├── PopupWithImage.js
+├── Section.js
+├── UserInfo.js
+└── index.js
+▶️ Ejecución local
+
+Debido al uso de módulos ES6, se recomienda ejecutar el proyecto mediante un servidor local.
+
+Puede utilizarse la extensión Live Server de Visual Studio Code:
+
+Clonar o descargar el repositorio.
+Abrir la carpeta del proyecto en Visual Studio Code.
+Abrir index.html mediante Live Server.
 💡 Aprendizajes clave
 
-Durante el desarrollo de este proyecto se reforzaron los siguientes conceptos:
+Durante este proyecto se reforzaron los siguientes conceptos:
 
-Programación Orientada a Objetos (POO).
+Consumo de una API REST.
+Manejo de solicitudes asíncronas.
+Uso de Promise.all().
+Programación Orientada a Objetos.
 Herencia entre clases.
 Encapsulación de responsabilidades.
 Modularización mediante ES6 Modules.
-Manipulación dinámica del DOM.
-Renderizado de componentes reutilizables.
-Gestión de formularios y validación.
-Implementación de ventanas emergentes reutilizables.
+Validación de formularios.
+Actualización de la interfaz con datos del servidor.
+Manejo de estados de carga.
+Gestión de errores.
+Desarrollo responsivo.
+Accesibilidad básica.
 Organización y escalabilidad de proyectos frontend.
-Desarrollo responsivo y experiencia de usuario.
 🧑‍💻 Autor
 
 Diego Granados
 
-Desarrollador Frontend en formación 💻
+Desarrollador Frontend en formación.
 
-TripleTen - Sprint 11 (2026)
+TripleTen — Sprint 12, 2026.

@@ -33,6 +33,48 @@
 }
 
 /* =========================
+   POPUP DE CONFIRMACIÓN
+========================= */
+
+.popup__confirmation .popup__container {
+  width: 430px;
+  min-height: auto;
+  height: auto;
+  padding: 34px 36px 36px;
+  box-sizing: border-box;
+}
+
+.popup__confirmation .popup__title {
+  margin: 0 0 38px;
+}
+
+.popup__confirmation .popup__form {
+  min-height: auto;
+  height: auto;
+  margin: 0;
+  gap: 0;
+}
+
+.popup__confirmation .popup__save-button {
+  margin: 0;
+}
+
+/* Popup de confirmación en teléfono */
+
+@media screen and (max-width: 544px) {
+  .popup__confirmation .popup__container {
+    width: calc(100% - 38px);
+    max-width: 282px;
+    padding: 25px 22px;
+  }
+
+  .popup__confirmation .popup__title {
+    margin-bottom: 25px;
+    font-size: 18px;
+  }
+}
+
+/* =========================
    TABLET
 ========================= */
 

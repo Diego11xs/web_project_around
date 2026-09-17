@@ -3,28 +3,29 @@
 ========================= */
 
 .elements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px 20px;
   font-weight: 900;
   color: #000;
-  display: grid;
-  gap: 17px 20px;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .elements__element {
   position: relative;
   max-width: 282px;
-  max-height: 361px;
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
-  transition: 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .elements__image {
+  display: block;
   width: 100%;
   height: 282px;
   object-fit: cover;
-  display: block;
   cursor: pointer;
 }
 
@@ -36,33 +37,40 @@
 }
 
 .elements__name {
-  text-align: left;
   margin: 0;
+  text-align: left;
+}
+
+.elements__like-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
 }
 
 .elements__like-button {
   width: 21px;
   height: 19px;
-  background-image: url(../images/like.svg);
-  margin-left: 10px;
-  background-size: contain;
-  background-position: center;
+  padding: 0;
   background-color: transparent;
+  background-image: url("../images/like.svg");
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .elements__like-button:hover {
-  background-image: url(../images/like-hover.svg);
-  cursor: pointer;
+  background-image: url("../images/like-hover.svg");
   opacity: 0.6;
-  transition: 0.2s;
 }
 
 .elements__like-button_active {
-  background-image: url(../images/like_active.svg);
+  background-image: url("../images/like_active.svg");
   transform: scale(1.2);
 }
 
@@ -72,17 +80,17 @@
   right: 10px;
   width: 18px;
   height: 18px;
+  padding: 0;
   background: url("../images/Trash.png") center/contain no-repeat;
   border: none;
   cursor: pointer;
   opacity: 0.8;
+  transition: opacity 0.2s ease;
 }
 
 .elements__delete-button:hover {
-  opacity: 1;
-  background: url("../images/Trashover.png") center/contain no-repeat;
+  background-image: url("../images/Trashover.png");
   opacity: 0.6;
-  transition: 0.2s;
 }
 
 .elements_remove {
