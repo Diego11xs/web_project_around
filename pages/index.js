@@ -2,14 +2,14 @@
    IMPORTACIONES
 ========================= */
 
-import Card from "./Card.js";
-import Section from "./Section.js";
-import FormValidator from "./FormValidator.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithConfirmation from "./PopupWithConfirmation.js";
-import UserInfo from "./UserInfo.js";
-import Api from "./Api.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 
 /* =========================
    CONFIGURACIÓN DE LA API
@@ -125,17 +125,7 @@ function createCard(cardData) {
    SECCIÓN DE TARJETAS
 ========================= */
 
-const cardSection = new Section(
-  {
-    items: [],
-    renderer: (item) => {
-      const cardElement = createCard(item);
-
-      cardSection.addItem(cardElement);
-    },
-  },
-  ".elements",
-);
+let cardSection;
 
 /* =========================
    POPUP PARA EDITAR PERFIL
@@ -296,11 +286,19 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       avatar: userData.avatar,
     });
 
-    cards.forEach((cardData) => {
-      const cardElement = createCard(cardData);
+    cardSection = new Section(
+      {
+        items: cards,
+        renderer: (cardData) => {
+          const cardElement = createCard(cardData);
 
-      cardSection.addItem(cardElement);
-    });
+          cardSection.addItem(cardElement);
+        },
+      },
+      ".elements",
+    );
+
+    cardSection.renderItems();
   })
   .catch((err) => {
     console.error(err);

@@ -135,23 +135,23 @@ Manejo de eventos.
 Formularios dinámicos.
 Componentes reutilizables.
 🗂️ Estructura principal
+
 web_project_around/
-├── index.html
-├── README.md
-├── images/
+├── components/
+│ ├── Api.js
+│ ├── Card.js
+│ ├── FormValidator.js
+│ ├── Popup.js
+│ ├── PopupWithConfirmation.js
+│ ├── PopupWithForm.js
+│ ├── PopupWithImage.js
+│ ├── Section.js
+│ └── UserInfo.js
+│
 ├── pages/
-│ └── index.css
-└── scripts/
-├── Api.js
-├── Card.js
-├── FormValidator.js
-├── Popup.js
-├── PopupWithConfirmation.js
-├── PopupWithForm.js
-├── PopupWithImage.js
-├── Section.js
-├── UserInfo.js
-└── index.js
+│ ├── index.css
+│ └── index.js
+
 ▶️ Ejecución local
 
 Debido al uso de módulos ES6, se recomienda ejecutar el proyecto mediante un servidor local.
